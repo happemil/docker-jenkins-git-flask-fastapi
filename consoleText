@@ -1,0 +1,570 @@
+Started by user Себегатуллин Эмиль Василович
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/web_apps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout Code)
+[Pipeline] parallel
+[Pipeline] { (Branch: Checkout Flask Code)
+[Pipeline] { (Branch: Checkout FastAPI Code)
+[Pipeline] stage
+[Pipeline] { (Checkout Flask Code)
+[Pipeline] stage
+[Pipeline] { (Checkout FastAPI Code)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/web_apps/flask
+[Pipeline] {
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/web_apps/fastapi
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+using credential git_credentials
+Cloning the remote Git repository
+Cloning repository http://sber_git/emils/flask_hello_world.git
+ > git init /var/jenkins_home/workspace/web_apps/flask # timeout=10
+Fetching upstream changes from http://sber_git/emils/flask_hello_world.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+using GIT_ASKPASS to set credentials Git Credentials
+[Pipeline] git
+ > git fetch --tags --force --progress -- http://sber_git/emils/flask_hello_world.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+The recommended git tool is: NONE
+using credential git_credentials
+Cloning the remote Git repository
+Cloning repository http://sber_git/emils/fastapi_hello_world.git
+ > git init /var/jenkins_home/workspace/web_apps/fastapi # timeout=10
+Fetching upstream changes from http://sber_git/emils/fastapi_hello_world.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+using GIT_ASKPASS to set credentials Git Credentials
+ > git fetch --tags --force --progress -- http://sber_git/emils/fastapi_hello_world.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url http://sber_git/emils/fastapi_hello_world.git # timeout=10
+ > git config remote.origin.url http://sber_git/emils/flask_hello_world.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 06e79c4d32aae05d7ca9fa8bac11ea30cae2de6b (refs/remotes/origin/main)Checking out Revision 2bdcac8dbb11dd98910ec70a24cb8df38760ae1c (refs/remotes/origin/main)
+
+ > git config core.sparsecheckout # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 2bdcac8dbb11dd98910ec70a24cb8df38760ae1c # timeout=10
+ > git checkout -f 06e79c4d32aae05d7ca9fa8bac11ea30cae2de6b # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b main 2bdcac8dbb11dd98910ec70a24cb8df38760ae1c # timeout=10
+ > git checkout -b main 06e79c4d32aae05d7ca9fa8bac11ea30cae2de6b # timeout=10
+Commit message: "+ Dockerfile ;"Commit message: "+ Dockerfile ;"
+
+ > git rev-list --no-walk 06e79c4d32aae05d7ca9fa8bac11ea30cae2de6b # timeout=10 > git rev-list --no-walk 2bdcac8dbb11dd98910ec70a24cb8df38760ae1c # timeout=10
+
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // parallel
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] parallel
+[Pipeline] { (Branch: Build Flask App)
+[Pipeline] { (Branch: Build FastAPI App)
+[Pipeline] stage
+[Pipeline] { (Build Flask App)
+[Pipeline] stage
+[Pipeline] { (Build FastAPI App)
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/web_apps@2
+[Pipeline] node
+[Pipeline] {
+[Pipeline] ws
+Running in /var/jenkins_home/workspace/web_apps/flask
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] readFile
+[Pipeline] sh
++ docker build -t 8944116d28a1c2a72c8d9a35a0910d23cd008c88 -t flask-app:latest -f Dockerfile .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.1s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 763B done
+#2 DONE 0.1s
+
+#3 resolve image config for docker.io/docker/dockerfile:1
+#3 DONE 1.4s
+
+#4 docker-image://docker.io/docker/dockerfile:1@sha256:ac85f380a63b13dfcefa89046420e1781752bab202122f8f50032edf31be0021
+#4 resolve docker.io/docker/dockerfile:1@sha256:ac85f380a63b13dfcefa89046420e1781752bab202122f8f50032edf31be0021 0.0s done
+#4 sha256:9d9c93f4b00be908ab694a4df732570bced3b8a96b7515d70ff93402179ad232 0B / 11.80MB 0.1s
+#4 sha256:ac85f380a63b13dfcefa89046420e1781752bab202122f8f50032edf31be0021 8.40kB / 8.40kB done
+#4 sha256:657fcc512c7369f4cb3d94ea329150f8daf626bc838b1a1e81f1834c73ecc77e 482B / 482B done
+#4 sha256:a17ee7fff8f5e97b974f5b48f51647d2cf28d543f2aa6c11aaa0ea431b44bb89 1.27kB / 1.27kB done
+#4 sha256:9d9c93f4b00be908ab694a4df732570bced3b8a96b7515d70ff93402179ad232 5.24MB / 11.80MB 0.4s
+#4 sha256:9d9c93f4b00be908ab694a4df732570bced3b8a96b7515d70ff93402179ad232 10.49MB / 11.80MB 0.5s
+#4 extracting sha256:9d9c93f4b00be908ab694a4df732570bced3b8a96b7515d70ff93402179ad232
+#4 sha256:9d9c93f4b00be908ab694a4df732570bced3b8a96b7515d70ff93402179ad232 11.80MB / 11.80MB 0.5s done
+#4 extracting sha256:9d9c93f4b00be908ab694a4df732570bced3b8a96b7515d70ff93402179ad232 0.1s done
+#4 DONE 0.7s
+
+#5 [internal] load metadata for docker.io/library/python:3.10.12-slim-bookworm
+#5 DONE 1.4s
+
+#6 [internal] load build context
+#6 transferring context: 6.25kB done
+#6 DONE 0.1s
+
+#7 [envs-setter 1/2] FROM docker.io/library/python:3.10.12-slim-bookworm@sha256:0fc68ae7deebdcede23b4c883ca2b0715ee7476b7d6f992f3221d1c1b6d18efe
+#7 resolve docker.io/library/python:3.10.12-slim-bookworm@sha256:0fc68ae7deebdcede23b4c883ca2b0715ee7476b7d6f992f3221d1c1b6d18efe
+#7 resolve docker.io/library/python:3.10.12-slim-bookworm@sha256:0fc68ae7deebdcede23b4c883ca2b0715ee7476b7d6f992f3221d1c1b6d18efe 0.1s done
+#7 sha256:0fc68ae7deebdcede23b4c883ca2b0715ee7476b7d6f992f3221d1c1b6d18efe 1.65kB / 1.65kB done
+#7 sha256:17b21230c489c72cd5bb182af517b4a131d8f40f8848ecef09ad91e5db413c9d 1.37kB / 1.37kB done
+#7 sha256:453eb99c8ccf2d2e21ffd5ed75c6f987bec38389b670dd918cf606aa3c6984f6 6.92kB / 6.92kB done
+#7 DONE 0.3s
+
+#8 [envs-setter 2/2] WORKDIR /app
+#8 DONE 0.0s
+
+#9 [wheels-builder 1/2] COPY ./requirements.txt ./
+#9 DONE 0.1s
+
+#10 [wheels-builder 2/2] RUN pip install       --upgrade       pip       setuptools       wheel ;     pip wheel       --no-cache-dir       --no-deps       --wheel-dir /app/wheels       -r requirements.txt ;
+#10 1.216 Requirement already satisfied: pip in /usr/local/lib/python3.10/site-packages (23.0.1)
+#10 1.451 Collecting pip
+#10 1.617   Downloading pip-23.2.1-py3-none-any.whl (2.1 MB)
+#10 1.899      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 7.5 MB/s eta 0:00:00
+#10 1.915 Requirement already satisfied: setuptools in /usr/local/lib/python3.10/site-packages (65.5.1)
+#10 2.180 Collecting setuptools
+#10 2.244   Downloading setuptools-68.0.0-py3-none-any.whl (804 kB)
+#10 2.279      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 804.0/804.0 kB 27.2 MB/s eta 0:00:00
+#10 2.285 Requirement already satisfied: wheel in /usr/local/lib/python3.10/site-packages (0.41.1)
+#10 2.434 Installing collected packages: setuptools, pip
+#10 2.434   Attempting uninstall: setuptools
+#10 2.435     Found existing installation: setuptools 65.5.1
+#10 2.467     Uninstalling setuptools-65.5.1:
+#10 2.517       Successfully uninstalled setuptools-65.5.1
+#10 2.803   Attempting uninstall: pip
+#10 2.804     Found existing installation: pip 23.0.1
+#10 2.872     Uninstalling pip-23.0.1:
+#10 2.948       Successfully uninstalled pip-23.0.1
+#10 3.700 Successfully installed pip-23.2.1 setuptools-68.0.0
+#10 3.700 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#10 4.554 Ignoring colorama: markers 'python_version >= "3.10" and python_version < "4.0" and platform_system == "Windows"' don't match your environment
+#10 4.703 Collecting blinker==1.6.2 (from -r requirements.txt (line 1))
+#10 4.843   Downloading blinker-1.6.2-py3-none-any.whl (13 kB)
+#10 4.912 Collecting click==8.1.6 (from -r requirements.txt (line 4))
+#10 4.952   Downloading click-8.1.6-py3-none-any.whl (97 kB)
+#10 5.011      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 1.7 MB/s eta 0:00:00
+#10 5.074 Collecting flask==2.3.2 (from -r requirements.txt (line 10))
+#10 5.116   Downloading Flask-2.3.2-py3-none-any.whl (96 kB)
+#10 5.127      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.9/96.9 kB 11.0 MB/s eta 0:00:00
+#10 5.186 Collecting itsdangerous==2.1.2 (from -r requirements.txt (line 13))
+#10 5.227   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+#10 5.288 Collecting jinja2==3.1.2 (from -r requirements.txt (line 16))
+#10 5.328   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+#10 5.342      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 kB 11.6 MB/s eta 0:00:00
+#10 5.470 Collecting markupsafe==2.1.3 (from -r requirements.txt (line 19))
+#10 5.511   Downloading MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+#10 5.587 Collecting werkzeug==2.3.6 (from -r requirements.txt (line 70))
+#10 5.627   Downloading Werkzeug-2.3.6-py3-none-any.whl (242 kB)
+#10 5.645      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 242.5/242.5 kB 16.1 MB/s eta 0:00:00
+#10 5.654 Saved ./wheels/blinker-1.6.2-py3-none-any.whl
+#10 5.655 Saved ./wheels/click-8.1.6-py3-none-any.whl
+#10 5.655 Saved ./wheels/Flask-2.3.2-py3-none-any.whl
+#10 5.655 Saved ./wheels/itsdangerous-2.1.2-py3-none-any.whl
+#10 5.656 Saved ./wheels/Jinja2-3.1.2-py3-none-any.whl
+#10 5.656 Saved ./wheels/MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#10 5.656 Saved ./wheels/Werkzeug-2.3.6-py3-none-any.whl
+#10 DONE 6.0s
+
+#11 [web-app 1/3] COPY --from=wheels-builder /app/wheels /wheels
+#11 DONE 0.1s
+
+#12 [web-app 2/3] RUN pip install --no-cache /wheels/*
+#12 1.358 Processing /wheels/Flask-2.3.2-py3-none-any.whl
+#12 1.374 Processing /wheels/Jinja2-3.1.2-py3-none-any.whl
+#12 1.378 Processing /wheels/MarkupSafe-2.1.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#12 1.384 Processing /wheels/Werkzeug-2.3.6-py3-none-any.whl
+#12 1.389 Processing /wheels/blinker-1.6.2-py3-none-any.whl
+#12 1.393 Processing /wheels/click-8.1.6-py3-none-any.whl
+#12 1.398 Processing /wheels/itsdangerous-2.1.2-py3-none-any.whl
+#12 1.451 Installing collected packages: MarkupSafe, itsdangerous, click, blinker, Werkzeug, Jinja2, Flask
+#12 1.831 Successfully installed Flask-2.3.2 Jinja2-3.1.2 MarkupSafe-2.1.3 Werkzeug-2.3.6 blinker-1.6.2 click-8.1.6 itsdangerous-2.1.2
+#12 1.832 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#12 2.043 
+#12 2.043 [notice] A new release of pip is available: 23.0.1 -> 23.2.1
+#12 2.043 [notice] To update, run: pip install --upgrade pip
+#12 DONE 2.1s
+
+#13 [web-app 3/3] COPY ./app.py ./
+#13 DONE 0.1s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 0.2s done
+#14 writing image sha256:edc1f00b41cd6832b86e42a8868e3b7b69ae4a7c5a17673bdba594c32ef2020a done
+#14 naming to docker.io/library/8944116d28a1c2a72c8d9a35a0910d23cd008c88 0.0s done
+#14 naming to docker.io/library/flask-app:latest 0.0s done
+#14 DONE 0.2s
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . 8944116d28a1c2a72c8d9a35a0910d23cd008c88
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1efefaec901fafe60e423722815f48f11304581264aabc8c0bc18f647905489f
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/web_apps/flask --volumes-from 1efefaec901fafe60e423722815f48f11304581264aabc8c0bc18f647905489f -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** 8944116d28a1c2a72c8d9a35a0910d23cd008c88 cat
+$ docker top e778a479754c0bc2ee83e901f4b7477d9ca2a6b268c22416efcf47adf652b783 -eo pid,comm
+[Pipeline] {
+[Pipeline] echo
+Building the Flask App..
+[Pipeline] }
+$ docker stop --time=1 e778a479754c0bc2ee83e901f4b7477d9ca2a6b268c22416efcf47adf652b783
+Still waiting to schedule task
+Waiting for next available executor
+$ docker rm -f --volumes e778a479754c0bc2ee83e901f4b7477d9ca2a6b268c22416efcf47adf652b783
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // ws
+[Pipeline] }
+Running on Jenkins in /var/jenkins_home/workspace/web_apps@2
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] {
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] ws
+Running in /var/jenkins_home/workspace/web_apps/fastapi
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] readFile
+[Pipeline] sh
++ docker build -t 3f0836fc32bb5cbac17aad948008dcc2c0a5685a -t fastapi-app:latest -f Dockerfile .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 786B done
+#1 DONE 0.1s
+
+#2 [internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.1s
+
+#3 resolve image config for docker.io/docker/dockerfile:1
+#3 DONE 0.2s
+
+#4 docker-image://docker.io/docker/dockerfile:1@sha256:ac85f380a63b13dfcefa89046420e1781752bab202122f8f50032edf31be0021
+#4 CACHED
+
+#5 [internal] load metadata for docker.io/library/python:3.10.12-slim-bookworm
+#5 DONE 0.2s
+
+#6 [envs-setter 1/2] FROM docker.io/library/python:3.10.12-slim-bookworm@sha256:0fc68ae7deebdcede23b4c883ca2b0715ee7476b7d6f992f3221d1c1b6d18efe
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 29.98kB done
+#7 DONE 0.0s
+
+#8 [envs-setter 2/2] WORKDIR /app
+#8 CACHED
+
+#9 [wheels-builder 1/2] COPY ./requirements.txt ./
+#9 DONE 0.0s
+
+#10 [wheels-builder 2/2] RUN pip install       --upgrade       pip       setuptools       wheel ;     pip wheel       --no-cache-dir       --no-deps       --wheel-dir /app/wheels       -r requirements.txt ;
+#10 1.167 Requirement already satisfied: pip in /usr/local/lib/python3.10/site-packages (23.0.1)
+#10 1.386 Collecting pip
+#10 1.538   Downloading pip-23.2.1-py3-none-any.whl (2.1 MB)
+#10 1.770      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 9.2 MB/s eta 0:00:00
+#10 1.777 Requirement already satisfied: setuptools in /usr/local/lib/python3.10/site-packages (65.5.1)
+#10 2.108 Collecting setuptools
+#10 2.151   Downloading setuptools-68.0.0-py3-none-any.whl (804 kB)
+#10 2.180      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 804.0/804.0 kB 29.2 MB/s eta 0:00:00
+#10 2.183 Requirement already satisfied: wheel in /usr/local/lib/python3.10/site-packages (0.41.1)
+#10 2.332 Installing collected packages: setuptools, pip
+#10 2.333   Attempting uninstall: setuptools
+#10 2.333     Found existing installation: setuptools 65.5.1
+#10 2.367     Uninstalling setuptools-65.5.1:
+#10 2.398       Successfully uninstalled setuptools-65.5.1
+#10 2.701   Attempting uninstall: pip
+#10 2.701     Found existing installation: pip 23.0.1
+#10 2.766     Uninstalling pip-23.0.1:
+#10 2.828       Successfully uninstalled pip-23.0.1
+#10 3.539 Successfully installed pip-23.2.1 setuptools-68.0.0
+#10 3.539 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#10 4.412 Ignoring colorama: markers 'python_version >= "3.10" and python_version < "4.0" and platform_system == "Windows"' don't match your environment
+#10 4.589 Collecting annotated-types==0.5.0 (from -r requirements.txt (line 1))
+#10 4.738   Downloading annotated_types-0.5.0-py3-none-any.whl (11 kB)
+#10 4.818 Collecting anyio==3.7.1 (from -r requirements.txt (line 4))
+#10 4.861   Downloading anyio-3.7.1-py3-none-any.whl (80 kB)
+#10 4.914      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.9/80.9 kB 1.6 MB/s eta 0:00:00
+#10 4.992 Collecting click==8.1.6 (from -r requirements.txt (line 7))
+#10 5.033   Downloading click-8.1.6-py3-none-any.whl (97 kB)
+#10 5.052      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 5.8 MB/s eta 0:00:00
+#10 5.110 Collecting exceptiongroup==1.1.2 (from -r requirements.txt (line 13))
+#10 5.151   Downloading exceptiongroup-1.1.2-py3-none-any.whl (14 kB)
+#10 5.271 Collecting fastapi==0.101.0 (from -r requirements.txt (line 16))
+#10 5.313   Downloading fastapi-0.101.0-py3-none-any.whl (65 kB)
+#10 5.321      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.7/65.7 kB 18.1 MB/s eta 0:00:00
+#10 5.383 Collecting h11==0.14.0 (from -r requirements.txt (line 19))
+#10 5.426   Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+#10 5.433      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.3/58.3 kB 24.9 MB/s eta 0:00:00
+#10 5.510 Collecting httptools==0.6.0 (from -r requirements.txt (line 22))
+#10 5.553   Downloading httptools-0.6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (428 kB)
+#10 5.607      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 428.8/428.8 kB 8.5 MB/s eta 0:00:00
+#10 5.672 Collecting idna==3.4 (from -r requirements.txt (line 58))
+#10 5.712   Downloading idna-3.4-py3-none-any.whl (61 kB)
+#10 5.717      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.5/61.5 kB 93.9 MB/s eta 0:00:00
+#10 6.394 Collecting pydantic-core==2.4.0 (from -r requirements.txt (line 61))
+#10 6.440   Downloading pydantic_core-2.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.9 MB)
+#10 6.505      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 30.6 MB/s eta 0:00:00
+#10 6.715 Collecting pydantic==2.1.1 (from -r requirements.txt (line 163))
+#10 6.759   Downloading pydantic-2.1.1-py3-none-any.whl (370 kB)
+#10 6.771      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 370.9/370.9 kB 49.4 MB/s eta 0:00:00
+#10 6.841 Collecting python-dotenv==1.0.0 (from -r requirements.txt (line 166))
+#10 6.883   Downloading python_dotenv-1.0.0-py3-none-any.whl (19 kB)
+#10 6.975 Collecting pyyaml==6.0.1 (from -r requirements.txt (line 169))
+#10 7.015   Downloading PyYAML-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (705 kB)
+#10 7.030      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 705.5/705.5 kB 56.4 MB/s eta 0:00:00
+#10 7.077 Collecting sniffio==1.3.0 (from -r requirements.txt (line 210))
+#10 7.119   Downloading sniffio-1.3.0-py3-none-any.whl (10 kB)
+#10 7.192 Collecting starlette==0.27.0 (from -r requirements.txt (line 213))
+#10 7.234   Downloading starlette-0.27.0-py3-none-any.whl (66 kB)
+#10 7.239      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.0/67.0 kB 140.2 MB/s eta 0:00:00
+#10 7.303 Collecting typing-extensions==4.7.1 (from -r requirements.txt (line 216))
+#10 7.345   Downloading typing_extensions-4.7.1-py3-none-any.whl (33 kB)
+#10 7.418 Collecting uvicorn[standard]==0.23.2 (from -r requirements.txt (line 219))
+#10 7.460   Downloading uvicorn-0.23.2-py3-none-any.whl (59 kB)
+#10 7.465      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.5/59.5 kB 84.1 MB/s eta 0:00:00
+#10 7.554 Collecting uvloop==0.17.0 (from -r requirements.txt (line 222))
+#10 7.597   Downloading uvloop-0.17.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.1 MB)
+#10 7.720      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.1/4.1 MB 34.4 MB/s eta 0:00:00
+#10 7.813 Collecting watchfiles==0.19.0 (from -r requirements.txt (line 253))
+#10 7.855   Downloading watchfiles-0.19.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+#10 7.879      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 65.2 MB/s eta 0:00:00
+#10 8.015 Collecting websockets==11.0.3 (from -r requirements.txt (line 276))
+#10 8.058   Downloading websockets-11.0.3-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (129 kB)
+#10 8.064      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 129.9/129.9 kB 150.4 MB/s eta 0:00:00
+#10 8.097 Saved ./wheels/annotated_types-0.5.0-py3-none-any.whl
+#10 8.098 Saved ./wheels/anyio-3.7.1-py3-none-any.whl
+#10 8.098 Saved ./wheels/click-8.1.6-py3-none-any.whl
+#10 8.098 Saved ./wheels/exceptiongroup-1.1.2-py3-none-any.whl
+#10 8.099 Saved ./wheels/fastapi-0.101.0-py3-none-any.whl
+#10 8.099 Saved ./wheels/h11-0.14.0-py3-none-any.whl
+#10 8.099 Saved ./wheels/httptools-0.6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#10 8.100 Saved ./wheels/idna-3.4-py3-none-any.whl
+#10 8.101 Saved ./wheels/pydantic_core-2.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#10 8.101 Saved ./wheels/pydantic-2.1.1-py3-none-any.whl
+#10 8.101 Saved ./wheels/python_dotenv-1.0.0-py3-none-any.whl
+#10 8.102 Saved ./wheels/PyYAML-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#10 8.102 Saved ./wheels/sniffio-1.3.0-py3-none-any.whl
+#10 8.102 Saved ./wheels/starlette-0.27.0-py3-none-any.whl
+#10 8.103 Saved ./wheels/typing_extensions-4.7.1-py3-none-any.whl
+#10 8.105 Saved ./wheels/uvloop-0.17.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#10 8.106 Saved ./wheels/watchfiles-0.19.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#10 8.106 Saved ./wheels/websockets-11.0.3-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#10 8.106 Saved ./wheels/uvicorn-0.23.2-py3-none-any.whl
+#10 DONE 8.6s
+
+#11 [web-app 1/3] COPY --from=wheels-builder /app/wheels /wheels
+#11 DONE 0.1s
+
+#12 [web-app 2/3] RUN pip install --no-cache /wheels/*
+#12 1.193 Processing /wheels/PyYAML-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#12 1.200 Processing /wheels/annotated_types-0.5.0-py3-none-any.whl
+#12 1.205 Processing /wheels/anyio-3.7.1-py3-none-any.whl
+#12 1.210 Processing /wheels/click-8.1.6-py3-none-any.whl
+#12 1.214 Processing /wheels/exceptiongroup-1.1.2-py3-none-any.whl
+#12 1.218 Processing /wheels/fastapi-0.101.0-py3-none-any.whl
+#12 1.223 Processing /wheels/h11-0.14.0-py3-none-any.whl
+#12 1.227 Processing /wheels/httptools-0.6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#12 1.232 Processing /wheels/idna-3.4-py3-none-any.whl
+#12 1.236 Processing /wheels/pydantic-2.1.1-py3-none-any.whl
+#12 1.241 Processing /wheels/pydantic_core-2.4.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#12 1.246 Processing /wheels/python_dotenv-1.0.0-py3-none-any.whl
+#12 1.251 Processing /wheels/sniffio-1.3.0-py3-none-any.whl
+#12 1.255 Processing /wheels/starlette-0.27.0-py3-none-any.whl
+#12 1.259 Processing /wheels/typing_extensions-4.7.1-py3-none-any.whl
+#12 1.263 Processing /wheels/uvicorn-0.23.2-py3-none-any.whl
+#12 1.268 Processing /wheels/uvloop-0.17.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#12 1.275 Processing /wheels/watchfiles-0.19.0-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#12 1.281 Processing /wheels/websockets-11.0.3-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#12 1.446 Installing collected packages: websockets, uvloop, typing-extensions, sniffio, PyYAML, python-dotenv, idna, httptools, h11, exceptiongroup, click, annotated-types, uvicorn, pydantic-core, anyio, watchfiles, starlette, pydantic, fastapi
+#12 2.495 Successfully installed PyYAML-6.0.1 annotated-types-0.5.0 anyio-3.7.1 click-8.1.6 exceptiongroup-1.1.2 fastapi-0.101.0 h11-0.14.0 httptools-0.6.0 idna-3.4 pydantic-2.1.1 pydantic-core-2.4.0 python-dotenv-1.0.0 sniffio-1.3.0 starlette-0.27.0 typing-extensions-4.7.1 uvicorn-0.23.2 uvloop-0.17.0 watchfiles-0.19.0 websockets-11.0.3
+#12 2.495 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#12 2.715 
+#12 2.715 [notice] A new release of pip is available: 23.0.1 -> 23.2.1
+#12 2.715 [notice] To update, run: pip install --upgrade pip
+#12 DONE 2.8s
+
+#13 [web-app 3/3] COPY ./main.py ./
+#13 DONE 0.1s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 0.3s done
+#14 writing image sha256:2ad77bc1829fe3adf6042684f6b5f258c3e5b8345544b3895939d4a32d3279b6 done
+#14 naming to docker.io/library/3f0836fc32bb5cbac17aad948008dcc2c0a5685a 0.0s done
+#14 naming to docker.io/library/fastapi-app:latest 0.0s done
+#14 DONE 0.3s
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . 3f0836fc32bb5cbac17aad948008dcc2c0a5685a
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1efefaec901fafe60e423722815f48f11304581264aabc8c0bc18f647905489f
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/web_apps/fastapi --volumes-from 1efefaec901fafe60e423722815f48f11304581264aabc8c0bc18f647905489f -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** 3f0836fc32bb5cbac17aad948008dcc2c0a5685a cat
+$ docker top ce8c53f321da7b85523b07e24147e855cdc619abba9c604e83ec79ccddd121b3 -eo pid,comm
+[Pipeline] {
+[Pipeline] echo
+Building the FastAPI App..
+[Pipeline] }
+$ docker stop --time=1 ce8c53f321da7b85523b07e24147e855cdc619abba9c604e83ec79ccddd121b3
+$ docker rm -f --volumes ce8c53f321da7b85523b07e24147e855cdc619abba9c604e83ec79ccddd121b3
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // ws
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // parallel
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] parallel
+[Pipeline] { (Branch: Deploy Flask App)
+[Pipeline] { (Branch: Deploy FastAPI App)
+[Pipeline] stage
+[Pipeline] { (Deploy Flask App)
+[Pipeline] stage
+[Pipeline] { (Deploy FastAPI App)
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/web_apps@2
+[Pipeline] node
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . flask-app:latest
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1efefaec901fafe60e423722815f48f11304581264aabc8c0bc18f647905489f
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/web_apps@2 --volumes-from 1efefaec901fafe60e423722815f48f11304581264aabc8c0bc18f647905489f -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** flask-app:latest cat
+$ docker top 82e5f1e39ad249857403f290a67a99d04501c4d4f8a4b2ba98d64367d71bfd85 -eo pid,comm
+[Pipeline] {
+[Pipeline] echo
+Flask App deployed
+[Pipeline] }
+$ docker stop --time=1 82e5f1e39ad249857403f290a67a99d04501c4d4f8a4b2ba98d64367d71bfd85
+$ docker rm -f --volumes 82e5f1e39ad249857403f290a67a99d04501c4d4f8a4b2ba98d64367d71bfd85
+[Pipeline] // withDockerContainer
+[Pipeline] }
+Running on Jenkins in /var/jenkins_home/workspace/web_apps@2
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] {
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . fastapi-app:latest
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins seems to be running inside container 1efefaec901fafe60e423722815f48f11304581264aabc8c0bc18f647905489f
+$ docker run -t -d -u 0:0 -w /var/jenkins_home/workspace/web_apps@2 --volumes-from 1efefaec901fafe60e423722815f48f11304581264aabc8c0bc18f647905489f -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** fastapi-app:latest cat
+$ docker top 52ae56a3220776b01e42a7dda4bf38a1f710c90ddf19a4f8a67296cffc17031a -eo pid,comm
+[Pipeline] {
+[Pipeline] echo
+FastAPI App deployed
+[Pipeline] }
+$ docker stop --time=1 52ae56a3220776b01e42a7dda4bf38a1f710c90ddf19a4f8a67296cffc17031a
+$ docker rm -f --volumes 52ae56a3220776b01e42a7dda4bf38a1f710c90ddf19a4f8a67296cffc17031a
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // parallel
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] sh
++ docker stop flask_app fastapi_app
+Error response from daemon: No such container: flask_app
+Error response from daemon: No such container: fastapi_app
++ true
+[Pipeline] sh
++ docker container remove flask_app fastapi_app
+Error response from daemon: No such container: flask_app
+Error response from daemon: No such container: fastapi_app
++ true
+[Pipeline] sh
++ docker run -d -p 8083:5000 --name flask_app --network sber_homework_default flask-app:latest
+c53dd0106b802c2c31cb6cbaa3f5ca1b71d1444d016fc03a60e45ee244e00c4a
+[Pipeline] sh
++ docker run -d -p 8084:8000 --name fastapi_app --network sber_homework_default fastapi-app:latest
+8361b10efad2c21d5cca3ea66031686f756d08a51aa3d09afbc0d134fc6bcaec
+[Pipeline] sh
++ sleep 5
+[Pipeline] sh
++ curl -X GET http://flask_app:5000/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    43  100    43    0     0  21500      0 --:--:-- --:--:-- --:--:-- 21500
+<p>The Flask service says Hello, World!</p>
+[Pipeline] sh
++ curl -X GET http://fastapi_app:8000/name
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    47  100    47    0     0  15666      0 --:--:-- --:--:-- --:--:-- 15666
+{"name":"The FastAPI service says hello world"}
+[Pipeline] sh
++ docker ps
++ grep -P flask|fastapi|NAMES
+CONTAINER ID   IMAGE                          COMMAND                  CREATED         STATUS                  PORTS                                                                                                                   NAMES
+8361b10efad2   fastapi-app:latest             "uvicorn main:app --…"   7 seconds ago   Up 6 seconds            0.0.0.0:8084->8000/tcp, :::8084->8000/tcp                                                                               fastapi_app
+c53dd0106b80   flask-app:latest               "flask run --host=0.…"   7 seconds ago   Up 6 seconds            0.0.0.0:8083->5000/tcp, :::8083->5000/tcp                                                                               flask_app
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
